@@ -550,4 +550,18 @@ applications that come with the platform
     <privapp-permissions package="com.android.calllogbackup">
         <permission name="com.android.voicemail.permission.READ_VOICEMAIL"/>
     </privapp-permissions>
+
+    <privapp-permissions package="com.google.android.tts">
+      <permission name="com.android.voicemail.permission.READ_VOICEMAIL"/>
+      <permission name="android.permission.INTERNET"/>
+      <permission name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+      <permission name="android.permission.FOREGROUND_SERVICE"/>
+      <permission name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+      <permission name="android.permission.ACCESS_NETWORK_STATE"/>
+      <permission name="android.permission.GET_PACKAGE_SIZE"/>
+      <permission name="android.permission.WAKE_LOCK"/>
+      <permission name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+      <permission name="android.permission.QUERY_ALL_PACKAGES"/>
+      <permission name="android.permission.UPDATE_APP_OPS_STATS"/>
+    </privapp-permissions>
 </permissions>

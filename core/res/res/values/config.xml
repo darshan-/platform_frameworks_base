@@ -2428,7 +2428,8 @@
 
     <!-- Base "touch slop" value used by ViewConfiguration as a
          movement threshold where scrolling should begin. -->
-    <dimen name="config_viewConfigurationTouchSlop">8dp</dimen>
+    <!-- Default value is 8dp, which is terrible on Pixel 6.  Doubling to 16 dp seems about right! -->
+    <dimen name="config_viewConfigurationTouchSlop">16dp</dimen>
 
     <!-- Base "hover slop" value used by ViewConfiguration as a
          movement threshold under which hover is considered "stationary". -->
