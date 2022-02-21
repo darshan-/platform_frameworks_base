@@ -127,33 +127,6 @@ public class AnimatableClockView extends TextView {
         refreshFormat();
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if (true) return;
-        if (mTextAnimator == null) {
-            mTextAnimator = new TextAnimator(
-                    getLayout(),
-                    () -> {
-                        invalidate();
-                        return Unit.INSTANCE;
-                    });
-            if (mOnTextAnimatorInitialized != null) {
-                mOnTextAnimatorInitialized.run();
-                mOnTextAnimatorInitialized = null;
-            }
-        } else {
-            mTextAnimator.updateLayout(getLayout());
-        }
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        if (true) return;
-        mTextAnimator.draw(canvas);
-    }
-
     void setLineSpacingScale(float scale) {
         mLineSpacingScale = scale;
         setLineSpacing(0, mLineSpacingScale);
@@ -253,19 +226,6 @@ public class AnimatableClockView extends TextView {
             long duration,
             long delay,
             Runnable onAnimationEnd) {
-        if (true) return;
-        final float size = 315f;
-        final int wt = 200;
-        if (mTextAnimator != null) {
-            mTextAnimator.setTextStyle(wt, size, color, animate, duration, null,
-                    delay, onAnimationEnd);
-        } else {
-            // when the text animator is set, update its start values
-            mOnTextAnimatorInitialized =
-                    () -> mTextAnimator.setTextStyle(
-                            wt, size, color, false, duration, null,
-                            delay, onAnimationEnd);
-        }
     }
 
     void refreshFormat() {
