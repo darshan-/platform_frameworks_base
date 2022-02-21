@@ -137,7 +137,7 @@ public class KeyguardClockSwitch extends RelativeLayout {
             mClockPlugin = null;
         }
         if (plugin == null) {
-            mClockView.setVisibility(View.VISIBLE);
+            //mClockView.setVisibility(View.VISIBLE);
             mLargeClockView.setVisibility(View.VISIBLE);
             return;
         }
@@ -169,9 +169,9 @@ public class KeyguardClockSwitch extends RelativeLayout {
      * It will also update plugin setStyle if plugin is connected.
      */
     public void setStyle(Style style) {
-        if (mClockPlugin != null) {
-            mClockPlugin.setStyle(style);
-        }
+        //if (mClockPlugin != null) {
+        //    mClockPlugin.setStyle(style);
+        //}
     }
 
     /**
@@ -268,15 +268,16 @@ public class KeyguardClockSwitch extends RelativeLayout {
      * the smaller version.
      */
     boolean willSwitchToLargeClock(boolean hasVisibleNotifications) {
-        if (mHasVisibleNotifications != null
-                && hasVisibleNotifications == mHasVisibleNotifications) {
-            return false;
-        }
-        boolean useLargeClock = !hasVisibleNotifications;
-        animateClockChange(useLargeClock);
+        // if (mHasVisibleNotifications != null
+        //         && hasVisibleNotifications == mHasVisibleNotifications) {
+        //     return false;
+        // }
+        // boolean useLargeClock = !hasVisibleNotifications;
+        // animateClockChange(useLargeClock);
 
-        mHasVisibleNotifications = hasVisibleNotifications;
-        return useLargeClock;
+        // mHasVisibleNotifications = hasVisibleNotifications;
+        // return useLargeClock;
+        return true;
     }
 
     public Paint getPaint() {

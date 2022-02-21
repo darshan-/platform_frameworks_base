@@ -40,8 +40,8 @@ import kotlin.Unit;
  * The time's text color is a gradient that changes its colors based on its controller.
  */
 public class AnimatableClockView extends TextView {
-    private static final CharSequence DOUBLE_LINE_FORMAT_12_HOUR = "hh\nmm";
-    private static final CharSequence DOUBLE_LINE_FORMAT_24_HOUR = "HH\nmm";
+    private static final CharSequence DOUBLE_LINE_FORMAT_12_HOUR = "h:mm";
+    private static final CharSequence DOUBLE_LINE_FORMAT_24_HOUR = "H:mm";
     private static final long DOZE_ANIM_DURATION = 300;
     private static final long APPEAR_ANIM_DURATION = 350;
     private static final long CHARGE_ANIM_DURATION_PHASE_0 = 500;
@@ -100,6 +100,11 @@ public class AnimatableClockView extends TextView {
         refreshFormat();
     }
 
+    public void setTextSize(int unit, float size) {
+        // DarshanOS: Hard-code text size, as everything is wacky
+        super.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 315f);
+    }
+
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -125,6 +130,7 @@ public class AnimatableClockView extends TextView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        if (true) return;
         if (mTextAnimator == null) {
             mTextAnimator = new TextAnimator(
                     getLayout(),
@@ -143,6 +149,8 @@ public class AnimatableClockView extends TextView {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        if (true) return;
         mTextAnimator.draw(canvas);
     }
 
@@ -245,14 +253,17 @@ public class AnimatableClockView extends TextView {
             long duration,
             long delay,
             Runnable onAnimationEnd) {
+        if (true) return;
+        final float size = 315f;
+        final int wt = 200;
         if (mTextAnimator != null) {
-            mTextAnimator.setTextStyle(weight, textSize, color, animate, duration, null,
+            mTextAnimator.setTextStyle(wt, size, color, animate, duration, null,
                     delay, onAnimationEnd);
         } else {
             // when the text animator is set, update its start values
             mOnTextAnimatorInitialized =
                     () -> mTextAnimator.setTextStyle(
-                            weight, textSize, color, false, duration, null,
+                            wt, size, color, false, duration, null,
                             delay, onAnimationEnd);
         }
     }
